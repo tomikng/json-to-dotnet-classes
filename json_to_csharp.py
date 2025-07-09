@@ -79,9 +79,7 @@ class CSharpClassGenerator:
         # Remove common suffixes/prefixes
         class_name = property_name
         
-        # Handle array naming with proper singularization
         if is_array:
-            # Use inflect to properly singularize
             singular = self.inflect_engine.singular_noun(class_name)  # type: ignore
             if singular:
                 class_name = singular
@@ -97,16 +95,22 @@ class CSharpClassGenerator:
         return class_name if class_name else "GeneratedClass"
     
     def to_pascal_case(self, text: str) -> str:
-        """Convert text to PascalCase."""
+        """Convert text to PascalCase while preserving acronyms, numbers, and suffixes."""
         if not text:
             return "GeneratedClass"
         
-        # Handle camelCase and snake_case
-        words = re.findall(r'[A-Z][a-z]*|[a-z]+|[A-Z]+(?=[A-Z][a-z]|\b)', text)
-        if not words:
-            words = [text]
+        # Handle snake_case
+        if '_' in text:
+            parts = text.split('_')
+            return ''.join(part.capitalize() for part in parts if part)
         
-        return ''.join(word.capitalize() for word in words)
+        # If it's already PascalCase or contains acronyms/numbers, preserve it
+        # Just ensure the first letter is uppercase
+        if text and text[0].islower():
+            return text[0].upper() + text[1:]
+        
+        # Already properly formatted
+        return text
     
     def analyze_object(self, obj: Dict[str, Any], class_name: str = "") -> Dict[str, str]:
         """Analyze an object and return property definitions."""
