@@ -1,5 +1,10 @@
 # JSON to C# Class Generator
 
+[![Tests](https://github.com/tomikng/json-to-dotnet-classes/workflows/Tests/badge.svg)](https://github.com/tomikng/json-to-dotnet-classes/actions)
+[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+
 A powerful Python tool that automatically generates strongly-typed C# classes from JSON structures. Perfect for creating DTOs, API models, and data contracts with proper JSON serialization attributes.
 
 ## Features
@@ -202,8 +207,48 @@ The generator automatically handles common naming patterns:
 
 ## Requirements
 
-- Python 3.7+
+- Python 3.8+
 - `inflect` library (for proper pluralization)
+
+## Testing
+
+The project includes comprehensive tests to ensure reliability and correctness.
+
+### Running Tests Locally
+
+```bash
+# Quick test run
+python run_tests.py
+
+# Or run tests manually
+pip install -r requirements.txt
+python -m pytest test_json_to_csharp.py -v
+```
+
+### Test Coverage
+
+The test suite covers:
+
+- ✅ **Type Detection** - All JSON to C# type conversions
+- ✅ **Pluralization** - Proper singular/plural handling (Activities → Activity)
+- ✅ **Naming Conventions** - PascalCase, DD suffix, str prefix handling
+- ✅ **File Generation** - Actual C# file creation and content verification
+- ✅ **Nested Objects** - Complex object hierarchies
+- ✅ **Arrays** - List handling and item class generation
+- ✅ **CLI Interface** - Command line argument processing
+- ✅ **Error Handling** - Invalid JSON, missing files, etc.
+- ✅ **Integration Tests** - End-to-end workflow testing
+
+### Continuous Integration
+
+The project uses GitHub Actions for automated testing:
+
+- **Multi-platform**: Tests run on Ubuntu, Windows, and macOS
+- **Multi-version**: Python 3.8, 3.9, 3.10, 3.11, and 3.12
+- **Code Quality**: Linting with flake8, formatting with black
+- **Coverage**: Code coverage reporting with Codecov
+
+All tests must pass before code can be merged.
 
 ## Error Handling
 
