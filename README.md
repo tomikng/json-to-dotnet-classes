@@ -47,7 +47,7 @@ python3 json_to_csharp.py data.json --records
 # Full example with all options
 python3 json_to_csharp.py deal-pull.json \
   --output Generated \
-  --namespace Yolkstudio.Orbis.Veritas.Integrations.Scarlett.Models \
+  --namespace YourNamespace.Models \
   --root-class DealDto \
   --records
 ```
