@@ -1,0 +1,6 @@
+importlib_metadata==8.7.0
+inflect==7.5.0
+more-itertools==10.7.0
+typeguard==4.4.4
+typing_extensions==4.14.1
+zipp==3.23.0
