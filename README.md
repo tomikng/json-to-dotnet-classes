@@ -245,8 +245,6 @@ The project uses GitHub Actions for automated testing:
 
 - **Multi-platform**: Tests run on Ubuntu, Windows, and macOS
 - **Multi-version**: Python 3.8, 3.9, 3.10, 3.11, and 3.12
-- **Code Quality**: Linting with flake8, formatting with black
-- **Coverage**: Code coverage reporting with Codecov
 
 All tests must pass before code can be merged.
 
