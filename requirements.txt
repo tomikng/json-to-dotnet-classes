@@ -1,2 +1,2 @@
-inflect==7.5.0
-pytest>=7.0.0
+inflect
+pytest
