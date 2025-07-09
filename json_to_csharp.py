@@ -76,19 +76,12 @@ class CSharpClassGenerator:
         if not property_name:
             return "GeneratedClass"
         
-        # Remove common suffixes/prefixes
         class_name = property_name
         
         if is_array:
             singular = self.inflect_engine.singular_noun(class_name)  # type: ignore
             if singular:
                 class_name = singular
-        
-        # Handle common patterns
-        if class_name.endswith('DD'):
-            class_name = class_name[:-2] + "Type"
-        elif class_name.startswith('str'):
-            class_name = class_name[3:]
         
         class_name = self.to_pascal_case(class_name)
         

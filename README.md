@@ -198,12 +198,21 @@ foreach (var user in response?.Users ?? [])
 
 ## Smart Naming Conventions
 
-The generator automatically handles common naming patterns:
+The generator uses intelligent naming conventions while preserving important suffixes and acronyms:
 
-- **Pluralization**: `activities` → `Activity` class
-- **Pascal Case**: `user_name` → `UserName` property
-- **DD Suffix**: `statusDD` → `StatusType` class
-- **Str Prefix**: `strStatus` → `Status` property
+### Property Naming
+- **Preserve Acronyms**: `FxLinkResponseID` → `FxLinkResponseID` (keeps ID suffix)
+- **Preserve Numbers**: `Level1Split`, `Level2Split` → `Level1Split`, `Level2Split` (prevents duplicates)
+- **Pascal Case**: `user_name` → `UserName`, `myProperty` → `MyProperty`
+
+### Class Naming
+- **Pluralization**: `activities` → `Activity` class (intelligent singularization for arrays)
+- **Preserve Original Names**: Class names maintain their original structure and suffixes
+
+### Code Generation Features
+- **Nullable Context**: All files include `#nullable enable` directive for proper nullable reference types
+- **Auto-Generated Headers**: Each file includes attribution comments
+- **Consistent Formatting**: Clean, readable C# code with proper indentation
 
 ## Requirements
 
@@ -247,16 +256,6 @@ The project uses GitHub Actions for automated testing:
 - **Multi-version**: Python 3.8, 3.9, 3.10, 3.11, and 3.12
 
 All tests must pass before code can be merged.
-
-## Error Handling
-
-The tool includes comprehensive error handling:
-
-- ✅ Missing JSON files
-- ✅ Invalid JSON format  
-- ✅ Empty or malformed data
-- ✅ File permission issues
-- ✅ Invalid command line arguments
 
 ## Contributing
 
